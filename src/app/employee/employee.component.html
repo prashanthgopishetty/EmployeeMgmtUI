@@ -1,0 +1,30 @@
+<table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Vacation Days</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.type }}</td>
+        <td>{{ employee.vacationDays }}</td>
+        <td>
+          <div *ngIf="employee.type === 'Hourly'">
+            <label for="work-days">Days Worked:</label>
+            <input id="work-days" type="number" [(ngModel)]="workDays">
+            <button (click)="work(employee, workDays)">Work</button>
+          </div>
+          <div *ngIf="employee.type !== 'Manager'">
+            <label for="vacation-days">Vacation Days:</label>
+            <input id="vacation-days" type="number" [(ngModel)]="vacationDays">
+            <button (click)="takeVacation(employee, vacationDays)">Take Vacation</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
